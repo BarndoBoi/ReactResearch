@@ -17,6 +17,8 @@
      View,
      TextInput,
      Button,
+     Switch,
+     Image,
  } from 'react-native';
  
  //Four game buttons displayed
@@ -26,13 +28,12 @@
  //Each game button navigates to a placeholder screen
  //Placeholder text + description
  //And Back to Home button
-
  
  const App: () => Node = () => {
-
      const [mainMenuIsVisible, setMainMenuVisible] = useState(true);
- 
-     const[checkersScreenIsVisible, setCheckersScreenVisible] = useState(false);
+     const [settingsScreenVisible, setSettingsScreenVisible] = useState(false);
+     const [checkersScreenIsVisible, setCheckersScreenVisible] = useState(false);
+     const [muteAudio, setMuteAudio] = useState(false);
      const [playerName, setPlayerName] = useState('Player');
  
      return (
@@ -48,6 +49,11 @@
                      style={styles.gameButton}
                      accessibilityLabel='Checkers'>
                  </Button>
+                 <Button
+                  title='Settings'
+                  onPress={() => {setMainMenuVisible(false); setSettingsScreenVisible(true)}}
+                  style={styles.settingsButton}>
+                 </Button>
              </View>
              <View style={{display: checkersScreenIsVisible ? 'flex' : 'none'}}>
                  <TextInput
@@ -57,10 +63,15 @@
                  <Text>Hello, {playerName}</Text>
                  <Button title='Go To Menu' accessibilityLabel='Go To Menu' onPress={() => {setCheckersScreenVisible(false); setMainMenuVisible(true);}}></Button>
              </View>
-             <Button
-                  title='Settings'
-                  onPress={() => setMainMenuVisible(!mainMenuIsVisible)}>
-                 </Button>
+             <View style={{display: settingsScreenVisible ? 'flex' : 'none'}}>
+                 <Text style={styles.settingsHeader}>Settings</Text>
+                 <Text>Mute Audio
+                     <Switch
+                     onValueChange={setMuteAudio}
+                     value={muteAudio}/>
+                 </Text>
+                 <Button title='Go To Menu' accessibilityLabel='Go To Menu' onPress={() => {setSettingsScreenVisible(false); setMainMenuVisible(true);}}></Button>
+             </View>
           </View>
       );
   };
@@ -76,6 +87,11 @@
           fontSize: 30,
           fontWeight: '600',
           textAlign: 'center'
+      },
+      settingsHeader: {
+          textAlign: 'center',
+          fontSize:35,
+          fontWeight:'bold',
       },
   });
  
