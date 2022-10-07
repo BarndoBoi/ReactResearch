@@ -21,15 +21,20 @@
      Image,
  } from 'react-native';
  
- //Four game buttons displayed
- //Home screen with settings button
- //Settings button opens a new screen with adjustments in it
- //Current settings screen will only have placeholder text
- //Each game button navigates to a placeholder screen
- //Placeholder text + description
- //And Back to Home button
+ /*
+ base for our game:
+ Four game buttons displayed
+ Home screen with settings button
+ Settings button opens a new screen with adjustments in it
+ Current settings screen will only have placeholder text
+ Each game button navigates to a placeholder screen
+ Placeholder text + description
+ And Back to Home button
+ This is a simplified version to get started
+ */
  
  const App: () => Node = () => {
+    // state declerations
      const [mainMenuIsVisible, setMainMenuVisible] = useState(true);
      const [settingsScreenVisible, setSettingsScreenVisible] = useState(false);
      const [checkersScreenIsVisible, setCheckersScreenVisible] = useState(false);
@@ -39,6 +44,7 @@
      return (
          <View>
              <StatusBar></StatusBar>
+             {/* main menu view screen */}
              <View style={[styles.menuView, { display: mainMenuIsVisible ? 'flex' : 'none' }]}>
                  <Text style={styles.titleText}>
                      Ye Old Games
@@ -58,6 +64,7 @@
                   style={styles.settingsButton}>
                  </Button>
              </View>
+              {/* checkers view screen */}
              <View style={{display: checkersScreenIsVisible ? 'flex' : 'none'}}>
                  <TextInput
                      value={playerName}
