@@ -79,23 +79,28 @@
       );
   };
  // style sheet instead of defaults
-  const styles = StyleSheet.create({
-      menuView: {
-          justifyContent: 'center',
-      },
-      gameButton: {
-          color: "aqua",
-      },
-      titleText: {
-          fontSize: 30,
-          fontWeight: '600',
-          textAlign: 'center'
-      },
-      settingsHeader: {
-          textAlign: 'center',
-          fontSize:35,
-          fontWeight:'bold',
-      },
-  });
+ const styles = StyleSheet.create({
+    menuView: {
+        justifyContent: 'center',
+        margin: 10,
+        padding: 25,
+    },
+    gameButton: {
+        margin: 10,
+        padding: 25,
+        borderwidth: 5,
+        borderRadius: 20,
+    },
+    titleText: {
+        fontSize: 30,
+        fontWeight: '600',
+        textAlign: 'center'
+    },
+    settingsHeader: {
+        textAlign: 'center',
+        fontSize:35,
+        fontWeight:'bold',
+    },
+});
  
   export default App;
